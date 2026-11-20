@@ -1,0 +1,15 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="p-5 mb-4 bg-light rounded-3">
+    <h1 class="display-5 fw-bold">Bienvenido a BDBIBLIOTECA 2026</h1>
+    <p class="col-md-8 fs-5">
+        Examen T1 – ASP.NET Core MVC.
+        Fecha y hora actual: <strong>@DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss")</strong>
+    </p>
+    <a class="btn btn-primary btn-lg" asp-controller="Libro" asp-action="Index">
+        Ver catálogo
+    </a>
+</div>
+

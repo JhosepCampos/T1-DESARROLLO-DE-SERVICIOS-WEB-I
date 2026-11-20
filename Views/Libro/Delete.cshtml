@@ -1,0 +1,71 @@
+﻿@model T1CAMPOSCRUZJHOSEPANTONY.Models.LibroViewModel
+
+@{
+    ViewData["Title"] = "Eliminar Libro";
+}
+
+<h1 class="text-danger">Eliminar Libro</h1>
+<h3 class="text-muted">¿Estás seguro de que deseas eliminar este registro por completo?</h3>
+<hr />
+
+<div class="row">
+    <div class="col-md-6">
+        <!-- Tarjeta de advertencia visual -->
+        <div class="card border-danger mb-4 shadow-sm">
+            <div class="card-header bg-danger text-white fw-bold">
+                <i class="bi bi-exclamation-triangle"></i> Datos del Libro a Borrar
+            </div>
+            <div class="card-body">
+                <dl class="row mb-0">
+                    <dt class="col-sm-4 fw-bold text-secondary">
+                        @Html.DisplayNameFor(model => model.CodLibro):
+                    </dt>
+                    <dd class="col-sm-8 text-dark">
+                        @Html.DisplayFor(model => model.CodLibro)
+                    </dd>
+
+                    <dt class="col-sm-4 fw-bold text-secondary mt-2">
+                        @Html.DisplayNameFor(model => model.NombreCategoria):
+                    </dt>
+                    <dd class="col-sm-8 text-dark mt-2">
+                        @Html.DisplayFor(model => model.NombreCategoria)
+                    </dd>
+
+                    <dt class="col-sm-4 fw-bold text-secondary mt-2">
+                        @Html.DisplayNameFor(model => model.Titulo):
+                    </dt>
+                    <dd class="col-sm-8 text-dark mt-2 fw-bold">
+                        @Html.DisplayFor(model => model.Titulo)
+                    </dd>
+
+                    <dt class="col-sm-4 fw-bold text-secondary mt-2">
+                        @Html.DisplayNameFor(model => model.ISBN):
+                    </dt>
+                    <dd class="col-sm-8 text-dark mt-2">
+                        @Html.DisplayFor(model => model.ISBN)
+                    </dd>
+
+                    <dt class="col-sm-4 fw-bold text-secondary mt-2">
+                        @Html.DisplayNameFor(model => model.Stock):
+                    </dt>
+                    <dd class="col-sm-8 text-dark mt-2">
+                        @Html.DisplayFor(model => model.Stock)
+                    </dd>
+                </dl>
+            </div>
+        </div>
+
+        <!-- Formulario que viaja al POST del controlador -->
+        <form asp-action="Delete" method="post">
+            <!-- Llave primaria oculta indispensable para el WHERE de tu SQL -->
+            <input type="hidden" asp-for="CodLibro" />
+
+            <button type="submit" class="btn btn-danger px-4">
+                Sí, Eliminar de la Biblioteca
+            </button>
+            <a asp-action="Index" class="btn btn-secondary ms-2">
+                Cancelar y Regresar
+            </a>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,120 @@
+﻿@model IEnumerable<T1CAMPOSCRUZJHOSEPANTONY.Models.PrestamoAnioViewModel>
+
+@{
+    ViewData["Title"] = "Consulta de Préstamos por Año";
+    int anioActual = ViewBag.AnioActual ?? DateTime.Now.Year;
+    int totalRegistros = ViewBag.TotalRegistros ?? 0;
+    int paginaActual = ViewBag.PaginaActual ?? 1;
+    int totalPaginas = ViewBag.TotalPaginas ?? 0;
+}
+
+<div class="container mt-4">
+    <h1 class="display-5 fw-bold mb-1">Consulta de Préstamos por Año</h1>
+    <p class="text-muted fs-5 mb-4">Listado de préstamos filtrados por año de registro</p>
+
+    <!-- Formulario con TextBox de tipo number (valor inicial = año actual) -->
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <form asp-action="PrestamosPorAnio" method="get" class="d-flex gap-2 align-items-center">
+            <label for="anio" class="fw-bold text-nowrap mb-0">Año de Préstamo:</label>
+            <input type="number" id="anio" name="anio" value="@anioActual" min="1900" max="2100" class="form-control" style="width: 130px;" required />
+            <button type="submit" class="btn btn-outline-primary">Buscar</button>
+            <a asp-action="PrestamosPorAnio" class="btn btn-outline-secondary">Año Actual</a>
+        </form>
+
+        <span class="badge bg-dark fs-6">
+            Total encontrados: @totalRegistros
+        </span>
+    </div>
+
+    <!-- Condición: Si no hay resultados, muestra mensaje y oculta la paginación -->
+    @if (totalRegistros == 0)
+    {
+        <div class="alert alert-warning text-center py-4" role="alert">
+            No se encontraron préstamos registrados para el año <strong>@anioActual</strong>.
+        </div>
+    }
+    else
+    {
+        <div class="table-responsive">
+            <table class="table table-striped table-bordered align-middle">
+                <thead class="table-dark">
+                    <tr>
+                        <th style="width: 90px;">ID</th>
+                        <th>Fecha Préstamo</th>
+                        <th>Fecha Devolución</th>
+                        <th>Estudiante</th>
+                        <th>Libro</th>
+                        <th class="text-center">Estado</th>
+                        <th class="text-end">Multa (S/)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.IdPrestamo</td>
+                            <td>@item.FechaPrestamo.ToString("dd/MM/yyyy")</td>
+                            <td>
+                                @(item.FechaDevolucion.HasValue
+                                    ? item.FechaDevolucion.Value.ToString("dd/MM/yyyy")
+                                    : "Pendiente")
+                            </td>
+                            <td>@item.ApellidosNombres</td>
+                            <td>@item.Titulo</td>
+                            <td class="text-center">
+                                @if (item.EstadoPrestamo == "DEVUELTO")
+                                {
+                                    <span class="badge bg-success">@item.EstadoPrestamo</span>
+                                }
+                                else if (item.EstadoPrestamo == "VENCIDO")
+                                {
+                                    <span class="badge bg-danger">@item.EstadoPrestamo</span>
+                                }
+                                else
+                                {
+                                    <span class="badge bg-warning text-dark">@item.EstadoPrestamo</span>
+                                }
+                            </td>
+                            <td class="text-end">@item.Multa.ToString("0.00")</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Los controles de paginación solo se muestran cuando existen registros -->
+        <div class="d-flex justify-content-between align-items-center mt-3">
+            <span class="text-muted small">
+                Mostrando página <strong>@paginaActual</strong> de <strong>@totalPaginas</strong> (@totalRegistros préstamos en total)
+            </span>
+
+            <nav aria-label="Navegación de páginas">
+                <ul class="pagination mb-0">
+                    <li class="page-item @(paginaActual <= 1 ? "disabled" : "")">
+                        <a class="page-link"
+                           asp-action="PrestamosPorAnio"
+                           asp-route-anio="@anioActual"
+                           asp-route-pagina="@(paginaActual - 1)">Anterior</a>
+                    </li>
+
+                    @for (int i = 1; i <= totalPaginas; i++)
+                    {
+                        <li class="page-item @(i == paginaActual ? "active" : "")">
+                            <a class="page-link"
+                               asp-action="PrestamosPorAnio"
+                               asp-route-anio="@anioActual"
+                               asp-route-pagina="@i">@i</a>
+                        </li>
+                    }
+
+                    <li class="page-item @(paginaActual >= totalPaginas ? "disabled" : "")">
+                        <a class="page-link"
+                           asp-action="PrestamosPorAnio"
+                           asp-route-anio="@anioActual"
+                           asp-route-pagina="@(paginaActual + 1)">Siguiente</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    }
+</div>

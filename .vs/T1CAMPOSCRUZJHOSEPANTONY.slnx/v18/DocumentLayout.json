@@ -1,0 +1,41 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\CICLO 5\\DESARROLLO DE SERVICIOS WEB I\\Examen\\T1\\T1CAMPOSCRUZJHOSEPANTONY\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{36F8132C-6B64-4DFF-B6B5-404D2CB21EA4}|T1CAMPOSCRUZJHOSEPANTONY.csproj|d:\\ciclo 5\\desarrollo de servicios web i\\examen\\t1\\t1camposcruzjhosepantony\\controllers\\librocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{36F8132C-6B64-4DFF-B6B5-404D2CB21EA4}|T1CAMPOSCRUZJHOSEPANTONY.csproj|solutionrelative:controllers\\librocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "LibroController.cs",
+              "DocumentMoniker": "D:\\CICLO 5\\DESARROLLO DE SERVICIOS WEB I\\Examen\\T1\\T1CAMPOSCRUZJHOSEPANTONY\\Controllers\\LibroController.cs",
+              "RelativeDocumentMoniker": "Controllers\\LibroController.cs",
+              "ToolTip": "D:\\CICLO 5\\DESARROLLO DE SERVICIOS WEB I\\Examen\\T1\\T1CAMPOSCRUZJHOSEPANTONY\\Controllers\\LibroController.cs",
+              "RelativeToolTip": "Controllers\\LibroController.cs",
+              "ViewState": "AgIAAKoAAAAAAAAAAAA5wN0AAAA0AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-20T03:09:44.157Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

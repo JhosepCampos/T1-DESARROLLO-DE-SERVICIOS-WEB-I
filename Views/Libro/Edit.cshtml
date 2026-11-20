@@ -1,0 +1,92 @@
+﻿@model T1CAMPOSCRUZJHOSEPANTONY.Models.LibroViewModel
+
+@{
+    ViewData["Title"] = "Editar Libro";
+}
+
+<h1>Editar Libro</h1>
+<h4>Modificar Información</h4>
+<hr />
+
+<div class="row">
+    <div class="col-md-6">
+        @if (ViewBag.Mensaje != null)
+        {
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                @ViewBag.Mensaje
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        }
+
+        <form asp-action="Edit" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <!-- Código del libro (solo lectura y enviado para el WHERE del SP) -->
+            <div class="form-group mb-3">
+                <label asp-for="CodLibro" class="control-label fw-bold"></label>
+                <input asp-for="CodLibro" class="form-control bg-light" readonly />
+            </div>
+
+            <!-- Categoría -->
+            <div class="form-group mb-3">
+                <label asp-for="CodCategoria" class="control-label fw-bold"></label>
+                <select asp-for="CodCategoria" asp-items="ViewBag.Categorias" class="form-select">
+                    <option value="">-- Seleccione una categoría --</option>
+                </select>
+                <span asp-validation-for="CodCategoria" class="text-danger"></span>
+            </div>
+
+            <!-- Título -->
+            <div class="form-group mb-3">
+                <label asp-for="Titulo" class="control-label fw-bold"></label>
+                <input asp-for="Titulo" class="form-control" maxlength="120" placeholder="Título del libro" />
+                <span asp-validation-for="Titulo" class="text-danger"></span>
+            </div>
+
+            <!-- ISBN -->
+            <div class="form-group mb-3">
+                <label asp-for="ISBN" class="control-label fw-bold"></label>
+                <input asp-for="ISBN" class="form-control" maxlength="20" placeholder="Ej. 978-3-16-148410-0" />
+                <span asp-validation-for="ISBN" class="text-danger"></span>
+            </div>
+
+            <!-- Año de Publicación -->
+            <div class="form-group mb-3">
+                <label asp-for="AnioPublicacion" class="control-label fw-bold"></label>
+                <input asp-for="AnioPublicacion" class="form-control" type="number" placeholder="Ej. 2024" />
+                <span asp-validation-for="AnioPublicacion" class="text-danger"></span>
+            </div>
+
+            <!-- Stock -->
+            <div class="form-group mb-3">
+                <label asp-for="Stock" class="control-label fw-bold"></label>
+                <input asp-for="Stock" class="form-control" type="number" min="0" placeholder="0" />
+                <span asp-validation-for="Stock" class="text-danger"></span>
+            </div>
+
+            <!-- Estado -->
+            <div class="form-group mb-4">
+                <label asp-for="Estado" class="control-label fw-bold"></label>
+                <select asp-for="Estado" class="form-select">
+                    <option value="1">Activo</option>
+                    <option value="0">Inactivo</option>
+                </select>
+                <span asp-validation-for="Estado" class="text-danger"></span>
+            </div>
+
+            <!-- Botones de Acción -->
+            <div class="form-group">
+                <button type="submit" class="btn btn-warning text-dark fw-bold">
+                    Guardar Cambios
+                </button>
+                <a asp-action="Index" class="btn btn-secondary ms-2">Regresar al Listado</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

@@ -1,0 +1,54 @@
+﻿@model T1CAMPOSCRUZJHOSEPANTONY.Models.LibroViewModel
+
+@{
+    ViewData["Title"] = "Detalles del Libro";
+}
+
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow-sm">
+                <div class="card-header bg-info text-dark">
+                    <h4 class="mb-0">Detalles del Libro</h4>
+                </div>
+                <div class="card-body">
+                    <dl class="row mb-0">
+                        <dt class="col-sm-4">@Html.DisplayNameFor(model => model.CodLibro)</dt>
+                        <dd class="col-sm-8">@Html.DisplayFor(model => model.CodLibro)</dd>
+
+                        <dt class="col-sm-4">@Html.DisplayNameFor(model => model.NombreCategoria)</dt>
+                        <dd class="col-sm-8">@Html.DisplayFor(model => model.NombreCategoria)</dd>
+
+                        <dt class="col-sm-4">@Html.DisplayNameFor(model => model.Titulo)</dt>
+                        <dd class="col-sm-8">@Html.DisplayFor(model => model.Titulo)</dd>
+
+                        <dt class="col-sm-4">@Html.DisplayNameFor(model => model.ISBN)</dt>
+                        <dd class="col-sm-8">@Html.DisplayFor(model => model.ISBN)</dd>
+
+                        <dt class="col-sm-4">@Html.DisplayNameFor(model => model.AnioPublicacion)</dt>
+                        <dd class="col-sm-8">@Html.DisplayFor(model => model.AnioPublicacion)</dd>
+
+                        <dt class="col-sm-4">@Html.DisplayNameFor(model => model.Stock)</dt>
+                        <dd class="col-sm-8">@Html.DisplayFor(model => model.Stock)</dd>
+
+                        <dt class="col-sm-4">@Html.DisplayNameFor(model => model.Estado)</dt>
+                        <dd class="col-sm-8">
+                            @if (Model.Estado == 1)
+                            {
+                                <span class="badge bg-success">Activo</span>
+                            }
+                            else
+                            {
+                                <span class="badge bg-secondary">Inactivo</span>
+                            }
+                        </dd>
+                    </dl>
+                </div>
+                <div class="card-footer d-flex justify-content-between">
+                    <a asp-action="Index" class="btn btn-secondary">Volver al listado</a>
+                    <a asp-action="Edit" asp-route-id="@Model.CodLibro" class="btn btn-warning">Editar</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
