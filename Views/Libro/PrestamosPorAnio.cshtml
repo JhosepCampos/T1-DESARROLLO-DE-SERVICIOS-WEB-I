@@ -11,8 +11,7 @@
 <div class="container mt-4">
     <h1 class="display-5 fw-bold mb-1">Consulta de Préstamos por Año</h1>
     <p class="text-muted fs-5 mb-4">Listado de préstamos filtrados por año de registro</p>
-
-    <!-- Formulario con TextBox de tipo number (valor inicial = año actual) -->
+    
     <div class="d-flex justify-content-between align-items-center mb-4">
         <form asp-action="PrestamosPorAnio" method="get" class="d-flex gap-2 align-items-center">
             <label for="anio" class="fw-bold text-nowrap mb-0">Año de Préstamo:</label>
@@ -25,8 +24,7 @@
             Total encontrados: @totalRegistros
         </span>
     </div>
-
-    <!-- Condición: Si no hay resultados, muestra mensaje y oculta la paginación -->
+    
     @if (totalRegistros == 0)
     {
         <div class="alert alert-warning text-center py-4" role="alert">
@@ -81,8 +79,7 @@
                 </tbody>
             </table>
         </div>
-
-        <!-- Los controles de paginación solo se muestran cuando existen registros -->
+        
         <div class="d-flex justify-content-between align-items-center mt-3">
             <span class="text-muted small">
                 Mostrando página <strong>@paginaActual</strong> de <strong>@totalPaginas</strong> (@totalRegistros préstamos en total)

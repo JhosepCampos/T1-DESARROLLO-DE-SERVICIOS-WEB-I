@@ -9,8 +9,7 @@
 <hr />
 
 <div class="row">
-    <div class="col-md-6">
-        <!-- Tarjeta de advertencia visual -->
+    <div class="col-md-6">        
         <div class="card border-danger mb-4 shadow-sm">
             <div class="card-header bg-danger text-white fw-bold">
                 <i class="bi bi-exclamation-triangle"></i> Datos del Libro a Borrar
@@ -54,10 +53,8 @@
                 </dl>
             </div>
         </div>
-
-        <!-- Formulario que viaja al POST del controlador -->
-        <form asp-action="Delete" method="post">
-            <!-- Llave primaria oculta indispensable para el WHERE de tu SQL -->
+       
+        <form asp-action="Delete" method="post">            
             <input type="hidden" asp-for="CodLibro" />
 
             <button type="submit" class="btn btn-danger px-4">

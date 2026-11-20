@@ -32,8 +32,7 @@ namespace T1CAMPOSCRUZJHOSEPANTONY.Service
         }
 
         public async Task<bool> InsertarLibroAsync(LibroViewModel model)
-        {
-            // Reglas de negocio según requisitos
+        {            
             if (string.IsNullOrWhiteSpace(model.CodLibro) || model.CodLibro.Trim().Length != 6)
                 throw new Exception("El código del libro debe tener exactamente 6 caracteres.");
 

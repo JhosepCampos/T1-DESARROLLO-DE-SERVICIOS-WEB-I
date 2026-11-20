@@ -28,8 +28,7 @@ namespace T1CAMPOSCRUZJHOSEPANTONY.Controllers
                 ViewBag.Mensaje = "No hay conexión con la base de datos para cargar las categorías.";
             }
         }
-
-        // GET: LibroController
+        
         [HttpGet]
         public async Task<ActionResult> Index()
         {
@@ -47,8 +46,7 @@ namespace T1CAMPOSCRUZJHOSEPANTONY.Controllers
                 return View(new List<LibroViewModel>());
             }
         }
-
-        // GET: LibroController/Details/5
+        
         [HttpGet]
         public async Task<IActionResult> Details(string id)
         {
@@ -63,16 +61,14 @@ namespace T1CAMPOSCRUZJHOSEPANTONY.Controllers
 
             return View(libro);
         }
-
-        // GET: LibroController/Create
+        
         [HttpGet]
         public async Task<IActionResult> Create()
         {
             await CargarCategoriasAsync();
             return View(new LibroViewModel());
         }
-
-        // POST: LibroController/Create
+        
         [HttpPost, ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(LibroViewModel libro)
         {
@@ -99,16 +95,14 @@ namespace T1CAMPOSCRUZJHOSEPANTONY.Controllers
                 }
             }
             catch (Exception ex)
-            {
-                // Atrapa errores de negocio (código/ISBN duplicado, año inválido, etc.)
+            {               
                 ViewBag.Mensaje = "Ocurrió un error: " + ex.Message;
                 await CargarCategoriasAsync(libro.CodCategoria);
                 return View(libro);
             }
         }
 
-
-        // GET: LibroController/Edit/5
+        
         [HttpGet]
         public async Task<IActionResult> Edit(string id)
         {
@@ -121,8 +115,7 @@ namespace T1CAMPOSCRUZJHOSEPANTONY.Controllers
             await CargarCategoriasAsync(libro.CodCategoria);
             return View(libro);
         }
-
-        // POST: LibroController/Edit/5
+        
         [HttpPost, ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(LibroViewModel modelo)
         {
@@ -152,8 +145,7 @@ namespace T1CAMPOSCRUZJHOSEPANTONY.Controllers
                 return View(modelo);
             }
         }
-
-        // GET: LibroController/Delete/5
+        
         [HttpGet]
         public async Task<IActionResult> Delete(string id)
         {
@@ -165,8 +157,7 @@ namespace T1CAMPOSCRUZJHOSEPANTONY.Controllers
 
             return View(libro);
         }
-
-        // POST: LibroController/Delete/5
+        
         [HttpPost, ValidateAntiForgeryToken]
         public async Task<IActionResult> Delete(string id, LibroViewModel model)
         {
@@ -184,8 +175,7 @@ namespace T1CAMPOSCRUZJHOSEPANTONY.Controllers
                 return RedirectToAction(nameof(Index));
             }
             catch (Exception ex)
-            {
-                // Aquí captura el mensaje claro si tiene préstamos relacionados
+            {                
                 TempData["Error"] = ex.Message;
                 return RedirectToAction(nameof(Index));
             }

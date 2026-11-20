@@ -20,15 +20,13 @@
 
         <form asp-action="Create" method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-
-            <!-- Campo Código de Libro -->
+            
             <div class="form-group mb-3">
                 <label asp-for="CodLibro" class="control-label fw-bold"></label>
                 <input asp-for="CodLibro" class="form-control" maxlength="6" placeholder="Ej. LIB001" />
                 <span asp-validation-for="CodLibro" class="text-danger"></span>
             </div>
-
-            <!-- Campo Categoría -->
+            
             <div class="form-group mb-3">
                 <label asp-for="CodCategoria" class="control-label fw-bold"></label>
                 <select asp-for="CodCategoria" asp-items="ViewBag.Categorias" class="form-select">
@@ -36,36 +34,31 @@
                 </select>
                 <span asp-validation-for="CodCategoria" class="text-danger"></span>
             </div>
-
-            <!-- Campo Título -->
+           
             <div class="form-group mb-3">
                 <label asp-for="Titulo" class="control-label fw-bold"></label>
                 <input asp-for="Titulo" class="form-control" maxlength="120" placeholder="Ej. Cien años de soledad" />
                 <span asp-validation-for="Titulo" class="text-danger"></span>
             </div>
-
-            <!-- Campo ISBN -->
+            
             <div class="form-group mb-3">
                 <label asp-for="ISBN" class="control-label fw-bold"></label>
                 <input asp-for="ISBN" class="form-control" maxlength="20" placeholder="Ej. 978-3-16-148410-0" />
                 <span asp-validation-for="ISBN" class="text-danger"></span>
             </div>
-
-            <!-- Campo Año de Publicación -->
+            
             <div class="form-group mb-3">
                 <label asp-for="AnioPublicacion" class="control-label fw-bold"></label>
                 <input asp-for="AnioPublicacion" class="form-control" type="number" placeholder="Ej. 2024" />
                 <span asp-validation-for="AnioPublicacion" class="text-danger"></span>
             </div>
-
-            <!-- Campo Stock -->
+           
             <div class="form-group mb-3">
                 <label asp-for="Stock" class="control-label fw-bold"></label>
                 <input asp-for="Stock" class="form-control" type="number" min="0" placeholder="0" />
                 <span asp-validation-for="Stock" class="text-danger"></span>
             </div>
-
-            <!-- Campo Estado -->
+           
             <div class="form-group mb-4">
                 <label asp-for="Estado" class="control-label fw-bold"></label>
                 <select asp-for="Estado" class="form-select">
@@ -74,8 +67,7 @@
                 </select>
                 <span asp-validation-for="Estado" class="text-danger"></span>
             </div>
-
-            <!-- Botones de Acción -->
+            
             <div class="form-group">
                 <button type="submit" class="btn btn-primary">
                     <i class="bi bi-save"></i> Guardar Libro
